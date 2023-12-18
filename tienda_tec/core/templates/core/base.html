@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/30b64cc982.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Webstore</title>
+</head>
+{% block extrastyle %}
+
+    <style>
+        .img-header {
+            /* Estilos para la imagen de fondo del encabezado */
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-height: 350px;
+            z-index: 1; /* Para asegurarse de que esté en la parte superior */
+        }
+        
+        
+        
+        .logo-img {
+            position: absolute;
+            top: 50px;
+            left: 20%; /* Centrar horizontalmente */
+            z-index: 2; /* Para asegurarse de que esté encima de la imagen de fondo */
+            height: 200px; /* Altura máxima */
+        }
+        
+        .logo-text {
+            position: absolute;
+            top: 100px;
+            left: 60%;
+            z-index: 2;
+            color: white;
+        }
+        
+        
+    </style>
+
+{% endblock %}
+<body>
+    <div class="container-fluid px-0 position-relative img-fluid">
+        <img src="img/fondo_cabecera.jpg" class="img-header">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 logo-container">
+                <img src="{% static "fondo_cabecera.png" %}" class="logo-img img-fluid"> <!--tiene que ver con esto y el css-->
+            </div>
+            <div class="col-md-6 col-lg-8">
+                <div class="logo-text text-center text-md-left">
+                    <div class="display-4">Webstore</div> 
+                    <div>Encuentra la mejor tecnología </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid px-0 sticky-top">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-2">
+                    <!-- logo -->
+                    <a class="navbar-brand" href="#">
+                        <img src="{% static "logo_dark.png" %}" style="width:40px;" class="rounded-pill">
+                    </a>
+                    <!-- boton para mostrar el menu -->
+                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#contenido_navbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="contenido_navbar">
+                        <!--me-auto es para que todo lo que este fuera de la lista, se pegue al lado derecho-->
+                            <ul class="navbar-nav me-auto mb-0 pt-3 pt-sm-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Catálogo</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                        Categorías
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">CPU</a></li>
+                                        <li><a class="dropdown-item" href="#">RAM</a></li>
+                                        <li><a class="dropdown-item" href="#">Tarjetas gráficas</a></li>
+                                        <li><a class="dropdown-item" href="#">Placas base</a></li>
+                                        <li><a class="dropdown-item" href="#">Gabinete</a></li>
+                                        <li><a class="dropdown-item" href="#">Fuentes de poder</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+        
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Registrarse</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Iniciar sesión</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+    
+        <div class="py-4"></div> <!-- Espacio blanco -->
+
+        {% block content %} {% endblock  %}
+        
+        <footer>
+            <div class="container-fluid bg-secondary d-flex justify-content-between align-items-center text-light p-3">
+                <div class="text-start">Copyright 2024 © Webstore® E-commerce</div>
+                <div class="text-end">
+                    Visita nuestras redes sociales
+                    <a class="link-light" href="https://www.facebook.com/tupagina" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a class="link-light" href="https://www.instagram.com/tuinstagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="link-light" href="https://wa.me/tunumerodeWhatsApp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </footer>
