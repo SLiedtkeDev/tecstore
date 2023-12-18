@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -47,11 +47,12 @@
 
 {% endblock %}
 <body>
+    {% load static %}
     <div class="container-fluid px-0 position-relative img-fluid">
-        <img src="img/fondo_cabecera.jpg" class="img-header">
+        <img src="{% static "fondo_cabecera.jpg" %}" class="img-header">
         <div class="row">
             <div class="col-md-6 col-lg-4 logo-container">
-                <img src="{% static "fondo_cabecera.png" %}" class="logo-img img-fluid"> <!--tiene que ver con esto y el css-->
+                <img src="{% static "logo_dark.png" %}" class="logo-img img-fluid"> <!--tiene que ver con esto y el css-->
             </div>
             <div class="col-md-6 col-lg-8">
                 <div class="logo-text text-center text-md-left">

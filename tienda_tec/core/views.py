@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import RedirectView
 
-# Create your views here.
+
+class Home(RedirectView):
+    pattern_name = 'store:product_list'
