@@ -2,8 +2,6 @@ from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class Product(models.Model):
     name = models.CharField(
@@ -13,6 +11,7 @@ class Product(models.Model):
     price = models.FloatField(verbose_name='Costo Unitario')
     created = models.DateTimeField(
         auto_now_add=True, verbose_name='Fecha de creación')
+    stock = models.IntegerField(verbose_name='Cantidad')
     updated = models.DateTimeField(
         auto_now=True, verbose_name='Fecha de actualización')
 
