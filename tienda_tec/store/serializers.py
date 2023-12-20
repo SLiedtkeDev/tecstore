@@ -15,5 +15,5 @@ class ProductDetailSerializer(ProductSerializer):
         fields = ProductSerializer.Meta.fields + ['id']
 
 
-class ProjectParameterSerializer(serializers.Serializer):
+class ProductParameterSerializer(serializers.Serializer):
     parameters = serializers.JSONField()
