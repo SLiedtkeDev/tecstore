@@ -165,10 +165,16 @@
     }
 
     function addCart(idProduct) {
+      var stock = document.getElementById(idProduct+'stock').innerHTML
       if (cart[idProduct] != undefined) {
-        cart[idProduct] += 1;
+        if (cart[idProduct] <= stock){
+            cart[idProduct] += 1;
+        }
       }else {
-        cart[idProduct] = 1;
+        if (stock != 0){
+            cart[idProduct] = 1;    
+        }
+
       }
       localStorage.setItem('cart', JSON.stringify(cart));
       showBadgeCart();
