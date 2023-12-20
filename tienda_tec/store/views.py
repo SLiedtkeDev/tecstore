@@ -22,13 +22,15 @@ def detail_order(request):
             product = Product.objects.get(pk=int(product))
             dict_product = {}
             dict_product['id'] = product.id
-            dict_product['title'] = product.name
+            dict_product['producto'] = product.name
             dict_product['quantity'] = qty
             dict_product['price'] = product.price
-            dict_product['sub_total'] = service.cost * qty
+            dict_product['sub_total'] = product.price * qty
             total += dict_product['sub_total']
             order.append(dict_product)
         # Se colocan en sesión estos datos
         request.session['total'] = total
         request.session['order'] = order
-        return render(request, 'services/detail_order.html', {'order': order, 'total': total})
+        return render(request, 'store/detail_order.html', {'order': order, 'total': total})
+    else:
+        return render(request, 'store/detail_order.html')
