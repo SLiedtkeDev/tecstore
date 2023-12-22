@@ -10,6 +10,17 @@ class ProductListView(ListView):
     model = Product
 
 
+def success_order(request):
+    if request.method == 'POST':
+        order = request.session['order']
+        for product in order:
+            prod_id = product['id']
+            quantity = product['quantity']
+            prod = Product.objects.get(pk=prod_id)
+            prod.stock = prod.stock - quantity
+            prod.save()
+
+
 def detail_order(request):
     if request.method == 'POST':
         data = request.POST['order_data']
