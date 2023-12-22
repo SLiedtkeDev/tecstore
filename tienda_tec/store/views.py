@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
 from .models import Product
+from .forms import OrderForm
 import json
 
 
@@ -19,6 +20,28 @@ def success_order(request):
             prod = Product.objects.get(pk=prod_id)
             prod.stock = prod.stock - quantity
             prod.save()
+
+
+class CreateOrder(CreateView):
+    form_class = OrderForm
+    template_name = 'store/order_client.html'
+    success_url = reverse_lazy('core:home')
+
+    def form_valid(self, form):
+        order = self.request.session['order']
+        for pro in order:
+            id = pro['id']
+            qty = pro['quantity']
+            p = Product.objects.get(pk=id)
+            p.stock = p.stock - qty
+            p.save()
+        order = form.save()
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super(CreateOrder, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
 
 def detail_order(request):
