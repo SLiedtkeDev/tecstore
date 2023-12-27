@@ -7,6 +7,7 @@ class TestProductModel(TestCase):
     def setUpTestData(self):
         p = Product(name="Prueba 1",
                     description="Es una prueba",
+                    stock=1,
                     price='550')
         p.save()
         self.products = Product.objects.all()
@@ -14,7 +15,7 @@ class TestProductModel(TestCase):
     def test_save(self):
         self.assertEquals(len(self.products), 1)
         self.assertIs(len(self.products) > 0, True)
-        self.assertEquals(self.products[0].sub_title, 'Subtitulo 1')
+        self.assertEquals(self.products[0].description, 'Es una prueba')
 
     def test_product_cost(self):
-        self.assertEquals(self.products[0].cost, 550)
+        self.assertEquals(self.products[0].price, 550)

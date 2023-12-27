@@ -7,6 +7,7 @@ class OrderForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         total = self.request.session.get('total')
+        print(total)
         # total = 200
         initial = kwargs.get('initial', {})
         initial['total'] = total

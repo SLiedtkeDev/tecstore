@@ -2,7 +2,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from django.contrib.auth.models import User, Permission
 from store.models import Product as Product
 import time
 
@@ -11,16 +10,17 @@ class TestSeleniumProducts(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        PATH_WEBDRIVER = r'C:\Users\USER\Documents\ChromeDriverchromedriver.exe'
-        product = Product(PATH_WEBDRIVER)
-        cls.driver = webdriver.Chrome(product=product)
+        PATH_WEBDRIVER = r'C:\Users\USER\Documents\ChromeDriver\chromedriver.exe'
+        service = Service(PATH_WEBDRIVER)
+        cls.driver = webdriver.Chrome(service=service)
         cls.driver.set_window_size(1600, 1000)
         n = 10
         for id in range(n):
             Product.objects.create(
-                name='Servicio ' + str(id),
-                description='Subtitulo del servicio ' + str(id),
-                price='500'
+                name='Producto ' + str(id),
+                description='descripcion del producto ' + str(id),
+                price='500',
+                stock=17
             )
 
     def test_title(self):
