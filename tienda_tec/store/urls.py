@@ -12,5 +12,5 @@ store_urlpatterns = ([
     path('detail_order/', views.detail_order, name='detail_order'),
     path('create_order/', CreateOrder.as_view(), name='create_order'),
     path('api/', include(router.urls)),
-    path('apiProducts/', ProductServices.as_view()),
+    path('apiProducts/', ProductServices.as_view(), name="postapi"),
 ], 'store')

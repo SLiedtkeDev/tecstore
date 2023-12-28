@@ -35,7 +35,7 @@ class TestSeleniumProducts(StaticLiveServerTestCase):
         url = self.live_server_url
         browser.get(url + '/store/')
         time.sleep(2)
-        btn_add_cart = browser.find_element(By.LINK_TEXT, 'Agregar')
+        btn_add_cart = browser.find_element(By.ID, 'addtocart')
         time.sleep(2)
         btn_add_cart.click()
         time.sleep(2)
